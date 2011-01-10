@@ -79,7 +79,7 @@
 -include_lib("include/wm_reqstate.hrl").
 -include_lib("include/wm_reqdata.hrl").
 
--define(WMVSN, "1.7.3").
+-define(WMVSN, "1.8.0").
 -define(QUIP, "participate in the frantic").
 -define(IDLE_TIMEOUT, infinity).
 
