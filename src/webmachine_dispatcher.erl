@@ -26,18 +26,9 @@
 -define(SEPARATOR, $\/).
 -define(MATCH_ALL, '*').
 
-%% @spec dispatch(Path::string(), DispatchList::[matchterm()]) ->
-%%                                            dispterm() | dispfail()
-%% @doc Interface for URL dispatching.
-%% See also http://bitbucket.org/justin/webmachine/wiki/DispatchConfiguration
 dispatch(PathAsString, DispatchList, RD) ->
     dispatch([], PathAsString, DispatchList, RD).
 
-%% @spec dispatch(Host::string(), Path::string(),
-%%                DispatchList::[matchterm()]) ->
-%%         dispterm() | dispfail()
-%% @doc Interface for URL dispatching.
-%% See also http://bitbucket.org/justin/webmachine/wiki/DispatchConfiguration
 dispatch(HostAsString, PathAsString, DispatchList, RD) ->
     Path = string:tokens(PathAsString, [?SEPARATOR]),
     % URIs that end with a trailing slash are implicitly one token
