@@ -289,7 +289,6 @@ core_tests() ->
      fun not_modified_j18/0,
      fun not_modified_j18_via_k13/0,
      fun not_modified_j18_via_h12/0,
-     fun not_modified_l17/0,
      fun see_other_n11/0,
      fun internal_server_error_n11/0,
      fun see_other_n11_resource_calls/0,
@@ -892,19 +891,6 @@ not_modified_j18_via_h12() ->
     {ok, Result} = httpc:request(get, {url(), Headers}, [], []),
     ?assertMatch({{"HTTP/1.1", 304, "Not Modified"}, _, _}, Result),
     ExpectedDecisionTrace = ?PATH_TO_J18_NO_ACPTHEAD_3,
-    ?assertEqual(ExpectedDecisionTrace, get_decision_ids()),
-    ok.
-
-%% 304 result via L17
-not_modified_l17() ->
-    put_setting(allowed_methods, ?DEFAULT_ALLOWED_METHODS),
-    put_setting(last_modified, ?FIRST_DAY_OF_LAST_YEAR),
-    put_setting(expires, ?FIRST_DAY_OF_NEXT_YEAR),
-    RFC1123LastYear = httpd_util:rfc1123_date(?FIRST_DAY_OF_LAST_YEAR),
-    Headers = [{"If-Modified-Since", RFC1123LastYear}],
-    {ok, Result} = httpc:request(get, {url(), Headers}, [], []),
-    ?assertMatch({{"HTTP/1.1", 304, "Not Modified"}, _, _}, Result),
-    ExpectedDecisionTrace = ?PATH_TO_L17_NO_ACPTHEAD,
     ?assertEqual(ExpectedDecisionTrace, get_decision_ids()),
     ok.
 
