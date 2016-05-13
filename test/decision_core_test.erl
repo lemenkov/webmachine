@@ -282,7 +282,6 @@ core_tests() ->
      fun not_modified_j18/0,
      fun not_modified_j18_via_k13/0,
      fun not_modified_j18_via_h12/0,
-     fun not_modified_l17/0,
      fun see_other_n11/0,
      fun internal_server_error_n11/0,
      fun see_other_n11_resource_calls/0,
